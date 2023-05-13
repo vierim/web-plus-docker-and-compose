@@ -16,4 +16,6 @@ build/
 # IDE Files
 .idea/
 .vscode
+
+# OS
 .DS_Store
