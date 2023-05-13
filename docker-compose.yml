@@ -3,10 +3,7 @@ version: '3'
 services:
   backend:
     container_name: backend
-    build:
-      context: backend
-      dockerfile: Dockerfile
-    image: backend-release:1.0.0
+    image: vierim/backend-release:1.0.0
     env_file: .env
     restart: always
     ports: 
@@ -18,10 +15,7 @@ services:
 
   frontend:
     container_name: frontend
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    image: frontend-release:1.0.0
+    image: vierim/frontend-release:1.0.1
     restart: always
     ports:
       - '8081:80'
@@ -35,16 +29,6 @@ services:
     restart: always
     volumes:
       - postgres_data_pub:/data/postgres
-    networks:
-      - backend
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgres
     networks:
       - backend
 
