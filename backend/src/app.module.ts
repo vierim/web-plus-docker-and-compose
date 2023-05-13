@@ -12,19 +12,25 @@ import { Wish } from './wishes/entities/wish.entity';
 import { Wishlist } from './wishlists/entities/wishlist.entity';
 import { Offer } from './offers/entities/offer.entity';
 
-const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env;
+const {
+  POSTGRES_HOST,
+  POSTGRES_PORT,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DB,
+} = process.env;
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: DB_HOST,
-      port: parseInt(DB_PORT),
-      username: DB_USERNAME,
-      password: DB_PASSWORD,
-      database: DB_NAME,
+      host: POSTGRES_HOST,
+      port: parseInt(POSTGRES_PORT),
+      username: POSTGRES_USER,
+      password: POSTGRES_PASSWORD,
+      database: POSTGRES_DB,
       entities: [User, Wish, Wishlist, Offer],
-      synchronize: false,
+      synchronize: true,
     }),
     UsersModule,
     WishesModule,
